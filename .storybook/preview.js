@@ -1,4 +1,4 @@
-import { BlogThemeProvider } from '../src/contexts/BlogThemeContext';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../src/styles/global-styles';
 import { theme } from '../src/styles/theme';
 
@@ -9,21 +9,21 @@ export const parameters = {
     values: [
       {
         name: 'light',
-        value: theme.colorsThemes.white,
+        value: theme.colors.white,
       },
       {
         name: 'dark',
-        value: theme.colorsThemes.primary,
+        value: theme.colors.primaryColor,
       },
     ],
   },
 };
 
 export const decorators = [
-  (StoryFn) => (
-    <BlogThemeProvider>
-      <StoryFn />
+  (Story) => (
+    <ThemeProvider theme={theme}>
+      <Story />
       <GlobalStyles />
-    </BlogThemeProvider>
+    </ThemeProvider>
   ),
 ];
